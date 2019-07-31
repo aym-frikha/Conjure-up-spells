@@ -1,0 +1,31 @@
++ . /snap/conjure-up/1055/spells/sdk/common.sh
+++ : nocloud
+++ : conjure-up-localhost-62b
+++ : conjure-openstack-novalx-c77
+++ : localhost
++ [[ localhost == \l\o\c\a\l\h\o\s\t ]]
+++ mktemp
++ tmpfile=/tmp/tmp.XwMvkgBVYb
++ debug 'Running pre-deploy for openstack-novalxd'
++ name=openstack-novalxd
++ logger -t conjure-up/openstack-novalxd '[DEBUG] (conjure-up-localhost-62b:conjure-openstack-novalx-c77)' 'Running pre-deploy for openstack-novalxd'
+++ getKey lxd-network-name
+++ kv-cli /home/ubuntu/.cache/conjure-up/.state.db get conjure-up.openstack-novalxd.lxd-network-name
++ NETWORK=lxdbr0
++ [[ lxdbr0 = \N\o\n\e ]]
+++ getKey lxd-storage-pool
+++ kv-cli /home/ubuntu/.cache/conjure-up/.state.db get conjure-up.openstack-novalxd.lxd-storage-pool
++ STORAGE_POOL=default
++ [[ default = \N\o\n\e ]]
++ lxc network create conjureup0 ipv6.address=none ipv6.nat=false ipv6.dhcp=false ipv4.address=10.101.0.1/24 ipv4.dhcp=false ipv4.nat=true
+Error: The network already exists
++ printf 'conjureup0 network already exists'
++ true
++ cat
++ cat /tmp/tmp.XwMvkgBVYb
++ lxc profile edit juju-conjure-openstack-novalx-c77
++ setResult 'Successful pre-deploy.'
++ setStepKey before-deploy.result 'Successful pre-deploy.'
++ setKey 00_process-providertype.before-deploy.result 'Successful pre-deploy.'
++ kv-cli /home/ubuntu/.cache/conjure-up/.state.db set conjure-up.openstack-novalxd.00_process-providertype.before-deploy.result 'Successful pre-deploy.'
++ exit 0
